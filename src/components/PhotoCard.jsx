@@ -30,7 +30,6 @@ const PhotoCard = ({ photoTitle }) => {
 					</Button>
 				</CardActions>
 			</Card>
-			;
 		</>
 	);
 };
