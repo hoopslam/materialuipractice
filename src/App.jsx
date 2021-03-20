@@ -3,23 +3,21 @@ import {
 	Typography,
 	AppBar,
 	Button,
-	Card,
-	CardActions,
-	CardContent,
-	CardMedia,
 	CssBaseline,
 	Grid,
 	Toolbar,
 	Container,
 } from "@material-ui/core";
-import { PhotoCamera, TapAndPlay } from "@material-ui/icons";
+import { PhotoCamera } from "@material-ui/icons";
+
+import PhotoCard from "./components/PhotoCard";
 
 import useStyles from "./styles";
 
-const cards = [1,2,3,4,5,6,7,8,9];
-
 function App() {
 	const classes = useStyles();
+	const photos = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 	return (
 		<>
 			<CssBaseline />
@@ -56,43 +54,24 @@ function App() {
 				</div>
 				<Container className={classes.cardGrid} maxWidth='md'>
 					<Grid container spacing={4}>
-            {cards.map(() => (
-              	<Grid item key={cards} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image='https://source.unsplash.com/random'
-                    title='Image title'
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a card content.  You can use it to describe content
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">View</Button>
-                    <Button size="small" color="primary">Edit</Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+						{photos.map((photo) => (
+							<Grid item xs={12} sm={6} md={4}>
+								<PhotoCard key={photo} photoTitle={`Photo ${photo}`} />
+							</Grid>
+						))}
 					</Grid>
 				</Container>
 			</main>
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" color="textSecondary" gutterBottom>
-          Made using React and Material-UI
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary">
-          &copy; 2021 David Cho
-        </Typography>
-      </footer>
+			<footer className={classes.footer}>
+				<Typography variant='h6' align='center' color='textSecondary' gutterBottom>
+					Made using React and Material-UI
+				</Typography>
+				<Typography variant='subtitle1' align='center' color='textSecondary'>
+					&copy; 2021 David Cho
+				</Typography>
+			</footer>
 		</>
 	);
 }
-
 
 export default App;
